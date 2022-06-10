@@ -1,5 +1,26 @@
  
  //c39
+    //criação dos botões de maneira 'tradicional'
+    this.resetTitle.html("Reinicar Jogo");
+    this.resetTitle.class("resetText");
+    this.resetTitle.position(width / 2 + 200, 40);
+
+    this.resetButton.class("resetButton");
+    this.resetButton.position(width / 2 + 230, 100);
+
+    this.leadeboardTitle.html("Placar");
+    this.leadeboardTitle.class("resetText");
+    this.leadeboardTitle.position(width / 3 - 60, 40);
+
+    this.leader1.class("leadersText");
+    this.leader1.position(width / 3 - 50, 80);
+
+    this.leader2.class("leadersText");
+    this.leader2.position(width / 3 - 50, 130);
+    
+    
+    
+    
  showLeaderboard() {
     var leader1, leader2;
     //retorna matriz de valores enumeraveis dos objetos
