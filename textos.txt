@@ -35,6 +35,35 @@
   }
   
  
+  //c40
+  addSprites(spriteGroup, numberOfSprites, spriteImage, scale, positions = []) {
+    for (var i = 0; i < numberOfSprites; i++) {
+      var x, y;
+
+      //Se a matriz NÃO  estiver vazia
+      // adicionar as posições da matriz à x e y
+      if (positions.length > 0) {
+        x = positions[i].x;
+        y = positions[i].y;
+        spriteImage = positions[i].image;
+
+      } else {
+
+        //aleatório para as metades da tela em x e y
+      x = random(width / 2 + 150, width / 2 - 150);
+      y = random(-height * 4.5, height - 400);
+
+      }
+
+      //criar sprite nas posições aleatórias
+      var sprite = createSprite(x, y);
+      sprite.addImage("sprite", spriteImage);
+
+      sprite.scale = scale;
+      spriteGroup.add(sprite);
+
+    }
+  }  
   
   //adicionando obstaculos c40
   var obstaclesPositions = [
