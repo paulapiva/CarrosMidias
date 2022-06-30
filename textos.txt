@@ -188,3 +188,51 @@ handleObstacleCollision(index) {
       player.update();
     }
   }
+  
+  handleCarACollisionWithCarB(index) {
+    if (index === 1) {
+      if (cars[index - 1].collide(cars[1])) {
+        if (this.leftKeyActive) {
+          player.positionX += 100;
+        } else {
+          player.positionX -= 100;
+        }
+
+        //Reduzindo a vida do jogador
+        if (player.life > 0) {
+          player.life -= 185 / 4;
+        }
+
+        player.update();
+      }
+    }
+    if (index === 2) {
+      if (cars[index - 1].collide(cars[0])) {
+        if (this.leftKeyActive) {
+          player.positionX += 100;
+        } else {
+          player.positionX -= 100;
+        }
+
+        //Reduzindo a vida do jogador
+        if (player.life > 0) {
+          player.life -= 185 / 4;
+        }
+
+        player.update();
+      }
+    }
+  }
+  
+//em player.js
+ getCarsAtEnd() {
+    database.ref("carsAtEnd").on("value", data => {
+      this.rank = data.val();
+    });
+  }
+
+  static updateCarsAtEnd(rank) {
+    database.ref("/").update({
+      carsAtEnd: rank
+    });
+  }
