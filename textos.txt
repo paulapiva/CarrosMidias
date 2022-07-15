@@ -172,6 +172,39 @@ showRank() {
   }
   
   //C42
+  
+   handleFuel(index) {
+    //adicionando combustível
+    cars[index - 1].overlap(fuels, function(collector, collected) {
+      player.fuel = 185;
+      //o sprite é coletado no grupo de colecionáveis que desencadeou
+      //o evento
+      collected.remove();
+    });
+
+    // reduz combustível
+    if (player.fuel > 0 && !this.playerMoving) {
+      player.fuel -= 0.3;
+    }
+
+    //perde por falta combustivel
+    if (player.fuel <= 0) {
+      gameState = 2;
+      this.gameOver();
+    }
+  }
+
+  handlePowerCoins(index) {
+    cars[index - 1].overlap(powerCoins, function(collector, collected) {
+      player.score += 21;
+      player.update();
+      //o sprite é coletado no grupo de colecionáveis que desencadeou
+      //o evento
+      collected.remove();
+    });
+  }
+  
+  
 handleObstacleCollision(index) {
     if (cars[index - 1].collide(obstacles)) {
       if (this.leftKeyActive) {
